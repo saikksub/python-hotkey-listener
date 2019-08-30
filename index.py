@@ -38,14 +38,13 @@ def validTimeout ():
     triggerCount = 0
 
 def onPresskey ():
-    print 'pressed'
     global triggerTimer
     global triggerCount
     triggerCount += 1
     clearTimer()
 
     if triggerCount == 2:
-        print('CTRL+C')
+        print('HOTKEY-COPY')
         triggerCount = 0
         clearTimer()
     else:
