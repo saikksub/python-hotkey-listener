@@ -1,3 +1,4 @@
+import platform
 import keyboard
 import threading
 import atexit
@@ -37,6 +38,7 @@ def validTimeout ():
     triggerCount = 0
 
 def onPresskey ():
+    print 'pressed'
     global triggerTimer
     global triggerCount
     triggerCount += 1
@@ -51,7 +53,10 @@ def onPresskey ():
         
 
 def registerCopyHotkey ():
-    keyboard.add_hotkey('ctrl+c', onPresskey)
+    if (platform.system() == 'Darwin'):
+        keyboard.add_hotkey('cmd+c', onPresskey)
+    else:
+        keyboard.add_hotkey('ctrl+c', onPresskey)
     keyboard.wait()
 
 def main ():
